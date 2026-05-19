@@ -3,180 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Noaman</title>
-
-<style>
-body{
-    margin:0;
-    font-family:Tahoma;
-    background:linear-gradient(135deg,#050505,#111,#000);
-    color:white;
-    height:100vh;
-    overflow:hidden;
-}
-
-.overlay{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:radial-gradient(circle at center,#111 0%,#000 70%);
-}
-
-.title{
-    text-align:center;
-    font-size:60px;
-    letter-spacing:10px;
-    margin-top:20px;
-    color:#fff;
-    text-shadow:0 0 20px #ffffff55;
-}
-
-.welcome{
-    text-align:center;
-    margin-top:10px;
-    font-size:20px;
-    color:#ccc;
-}
-
-.cards{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    margin-top:80px;
-}
-
-.card{
-    width:260px;
-    height:320px;
-    background:rgba(255,255,255,0.05);
-    border-radius:20px;
-    backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,0.1);
-    box-shadow:0 0 25px rgba(0,0,0,0.8);
-    cursor:pointer;
-    transition:0.4s;
-    padding:20px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    font-size:20px;
-}
-
-.card:hover{
-    transform:scale(1.07);
-    box-shadow:0 0 40px rgba(255,255,255,0.2);
-}
-
-.quoteBox{
-    position:absolute;
-    bottom:40px;
-    width:100%;
-    text-align:center;
-    font-size:24px;
-    color:#eee;
-    text-shadow:0 0 10px black;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="overlay"></div>
 
 <div class="title">NOAMAN</div>
 
 <div class="welcome">
-مرحبا صديقي أسامة بولويز 🌙  
-رسالة من نعمان: من صديقك الذي لا أصدقاء له في الأصل.  
+مرحبا صديقي أسامة بولويز 🌙<br>
+رسالة من نعمان: من صديقك الذي لا أصدقاء له في الأصل.<br>
 هل يليق بي أن أكون صاحب حبكة، مخرج، مؤلف، مانغاكا؟
 </div>
 
 <div class="cards">
-<div class="card" onclick="showQuote(1)">الوحدة</div>
-<div class="card" onclick="showQuote(2)">الأنانية</div>
-<div class="card" onclick="showQuote(3)">الفراغ</div>
+<a href="loneliness.html"><div class="card">الوحدة</div></a>
+<a href="selfish.html"><div class="card">الأنانية</div></a>
+<a href="void.html"><div class="card">الفراغ</div></a>
 </div>
-
-<div class="quoteBox" id="quote">اضغط على بطاقة لتظهر الجملة...</div>
-
-<script>
-const loneliness = [
-"البشر كائنات مزعجة","الوحدة ليست صمتاً بل ضجيج داخلي",
-"أحياناً أفضل صديقي هو ظلي","الصمت أصدق من البشر",
-"لا أحد يفهمك كما تفهم نفسك","الوحدة راحة مؤلمة",
-"أحب المسافات الطويلة","كل العلاقات مؤقتة",
-"الأفكار أوفى من الناس","الوحدة رفاهية مؤلمة",
-"أفضل الحوار مع نفسي","الهدوء صديقي",
-"الانعزال مهارة","البشر يرحلون دائماً",
-"أثق بالصمت","أنا بخير وحدي",
-"الوحدة عالم خاص","الصمت أمان",
-"الهدوء حياة","أحب الهروب من الضجيج",
-"الوحدة تقتل ببطء","الراحة في العزلة",
-"أنا وموسيقاى فقط","لا حاجة للضوضاء",
-"العالم مزدحم بلا معنى","أفضل البقاء بعيداً",
-"الوحدة وضوح","الصمت لغة النخبة",
-"العزلة قوة","أعيش داخلي",
-"أنا مكتفٍ","الأفكار تكفيني",
-"لا حاجة لأحد","أصدقائي خيالي",
-"أنا مشروع وحدة","الهدوء وطن",
-"الانعزال راحة","العالم بعيد",
-"لا أحد يسمعني","الصمت أجمل",
-"الوحدة صدق","أنا وحدي دائماً",
-"أحب المسافات","الوحدة هدوء"
-];
-
-const selfish = [
-"أنا ثم أنا ثم أنا","العالم يدور حولي",
-"نفسي أولاً دائماً","أحب مصلحتي",
-"أنا أولويتي","لن أضحي براحتى",
-"أختار نفسي","أنا أهم",
-"لن أكون خياراً ثانياً","أستحق الأفضل",
-"أحب نفسي جداً","حلمي أهم",
-"وقتي ملكي","لا وقت للآخرين",
-"أنا المركز","أحب راحتي",
-"لا أقدم التنازلات","أفكر بنفسي",
-"أنا الهدف","أفكاري أولاً",
-"لا أضحي","نفسي فوق الجميع",
-"أنا محور حياتي","أختار نفسي دائماً",
-"أنا الأهم","أحب ذاتي",
-"أنا قراري","أعيش لنفسي",
-"أنا الأول","نفسي أولاً",
-"أنا الغاية","أحب نفسي أكثر",
-"أنا الطريق","أنا البداية",
-"أنا النهاية","أنا السبب",
-"أنا الرغبة","أنا الهدف",
-"أنا الاختيار","أنا القوة",
-"أنا القرار","أنا الحياة",
-"أنا كل شيء"
-];
-
-const voidQuotes = [
-"...","لا شيء","فراغ","صمت","ظلام",
-"لا صوت","لا حياة","لا معنى","نهاية",
-"لا بداية","لا أحد","لا مكان","عدم",
-"العدم يراقبك","لا تفكير","الفراغ يبتلع",
-"اللاشيء يقترب","الصمت يصرخ","الظلام يتنفس",
-"اللاوجود","سكون","فراغ أبدي","سقوط",
-"العدم هنا","الفراغ يتسع","لا زمن",
-"لا ضوء","لا شعور","لا ذاكرة",
-"لا طريق","لا مخرج","الفراغ ينتظر",
-"العدم يسمعك","لا عودة","سكون مطلق",
-"اللاشيء يكبر","الظلام دائم","فراغ داخلي",
-"لا وجود","لا نهاية","العدم يبتسم",
-"لا أثر","لا صوت أبداً","صمت أبدي"
-];
-
-function randomItem(arr){
-  return arr[Math.floor(Math.random()*arr.length)];
-}
-
-function showQuote(type){
-  let text="";
-  if(type==1) text=randomItem(loneliness);
-  if(type==2) text=randomItem(selfish);
-  if(type==3) text=randomItem(voidQuotes);
-  document.getElementById("quote").innerText=text;
-}
-</script>
-
+<div class="headerBox">
+مرحبا صديقي أسامة بولويز 🌙 <br>
+رسالة من صديقك نعمان الذي لا أصدقاء له من الأساس
+</div>
 </body>
 </html>
