@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الفراغ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="title">الفراغ</div>
+
+<div class="headerBox">
+مرحبا صديقي أسامة بولويز 🌙 <br>
+رسالة من صديقك نعمان الذي لا أصدقاء له من الأساس
+</div>
+
+<div class="centerBox">
+<button class="btn" onclick="newQuote()">جملة جديدة</button>
+<div class="quote" id="q">اضغط الزر</div>
+<a href="index.html"><div class="btn">العودة للرئيسية</div></a>
+</div>
+
+<script>
+const quotes=[
+"...","لا شيء","فراغ","صمت","ظلام",
+"لا صوت","لا حياة","لا معنى","عدم",
+"لا أحد","لا مكان","العدم يراقبك",
+"الفراغ يبتلع","اللاوجود","لا زمن",
+"لا ضوء","لا شعور","لا طريق",
+"الفراغ ينتظر","لا عودة"
+];
+
+function newQuote(){
+document.getElementById("q").innerText=
+quotes[Math.floor(Math.random()*quotes.length)];
+}
+</script>
+
+</body>
+</html>
