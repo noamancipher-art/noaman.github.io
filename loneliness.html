@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الوحدة</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="title">الوحدة</div>
+
+<div class="headerBox">
+مرحبا صديقي أسامة بولويز 🌙 <br>
+رسالة من صديقك نعمان الذي لا أصدقاء له من الأساس
+</div>
+
+<div class="centerBox">
+<button class="btn" onclick="newQuote()">جملة جديدة</button>
+<div class="quote" id="q">اضغط الزر</div>
+<a href="index.html"><div class="btn">العودة للرئيسية</div></a>
+</div>
+
+<script>
+const quotes=[
+"البشر كائنات مزعجة","الوحدة ليست صمتاً بل ضجيج داخلي",
+"أفضل صديقي هو ظلي","الصمت أصدق من البشر",
+"الوحدة راحة مؤلمة","أثق بالصمت","أنا بخير وحدي",
+"العزلة قوة","لا حاجة لأحد","أنا مشروع وحدة",
+"الهدوء وطن","العالم بعيد","الصمت أجمل",
+"الوحدة صدق","أنا وحدي دائماً",
+"أحب المسافات","الوحدة هدوء","أفضل العزلة",
+"العلاقات مؤقتة","الصمت أمان"
+];
+
+function newQuote(){
+document.getElementById("q").innerText=
+quotes[Math.floor(Math.random()*quotes.length)];
+}
+</script>
+
+</body>
+</html>
