@@ -6,21 +6,25 @@ body{
     min-height:100vh;
 }
 
+/* العنوان */
 .title{
     text-align:center;
     font-size:60px;
     letter-spacing:10px;
     margin-top:20px;
-    text-shadow:0 0 20px #ffffff55;
+    text-shadow:0 0 25px #ffffff55;
 }
 
-.welcome{
+/* صندوق الترحيب */
+.headerBox{
     text-align:center;
-    margin-top:10px;
-    font-size:20px;
+    margin-top:15px;
     color:#ccc;
+    font-size:20px;
+    line-height:1.8;
 }
 
+/* البطاقات */
 .cards{
     display:flex;
     justify-content:center;
@@ -38,16 +42,15 @@ body{
     box-shadow:0 0 25px rgba(0,0,0,0.8);
     cursor:pointer;
     transition:0.4s;
-    padding:20px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    font-size:22px;
+    font-size:24px;
 }
 
 .card:hover{
-    transform:scale(1.07);
+    transform:scale(1.08);
     box-shadow:0 0 40px rgba(255,255,255,0.2);
 }
 
@@ -57,7 +60,7 @@ body{
 }
 
 .btn{
-    padding:15px 30px;
+    padding:15px 35px;
     background:black;
     border:1px solid white;
     color:white;
@@ -70,11 +73,5 @@ body{
     font-size:28px;
     margin-top:40px;
 }
-a{ color:white; text-decoration:none; }
-.headerBox{
-    text-align:center;
-    margin-top:20px;
-    color:#ccc;
-    font-size:18px;
-    line-height:1.8;
-}
+
+a{color:white;text-decoration:none;}
