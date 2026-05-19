@@ -1,204 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N O A M A N | The Director's Cut</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold-accent: rgba(212, 175, 55, 0.3);
-            --dark-void: #020202;
-        }
-        
-        body {
-            background-color: var(--dark-void);
-            color: #fff;
-            margin: 0;
-            overflow: hidden;
-            cursor: none; /* Hide default cursor */
-        }
+<meta charset="UTF-8">
+<title>Noaman</title>
 
-        /* Custom Glowing Cursor */
-        #cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            transition: width 0.3s, height 0.3s;
-        }
+<style>
+body{
+    margin:0;
+    font-family:Tahoma;
+    background:linear-gradient(135deg,#050505,#111,#000);
+    color:white;
+    height:100vh;
+    overflow:hidden;
+}
 
-        /* Cinematic Typography */
-        .font-arabic { font-family: 'Amiri', serif; }
-        .font-english { font-family: 'Cinzel', serif; }
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle at center,#111 0%,#000 70%);
+}
 
-        .director-name {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 28vw;
-            font-family: 'Cinzel', serif;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.01);
-            z-index: 0;
-            pointer-events: none;
-            user-select: none;
-        }
+.title{
+    text-align:center;
+    font-size:60px;
+    letter-spacing:10px;
+    margin-top:20px;
+    color:#fff;
+    text-shadow:0 0 20px #ffffff55;
+}
 
-        /* The Monolith Cards */
-        .monolith {
-            position: relative;
-            background: linear-gradient(180deg, rgba(15,15,15,0.8) 0%, rgba(5,5,5,0.9) 100%);
-            border-top: 1px solid var(--gold-accent);
-            border-bottom: 1px solid rgba(255,255,255,0.02);
-            backdrop-filter: blur(20px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 10;
-        }
+.welcome{
+    text-align:center;
+    margin-top:10px;
+    font-size:20px;
+    color:#ccc;
+}
 
-        .monolith:hover {
-            transform: translateY(-15px);
-            border-top: 1px solid rgba(212, 175, 55, 0.8);
-            box-shadow: 0 -20px 50px rgba(212, 175, 55, 0.05);
-        }
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:80px;
+}
 
-        /* Ambient Breathing Background */
-        .ambient-bg {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #000000 100%);
-            animation: breathe 10s infinite alternate;
-            z-index: -2;
-        }
+.card{
+    width:260px;
+    height:320px;
+    background:rgba(255,255,255,0.05);
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 0 25px rgba(0,0,0,0.8);
+    cursor:pointer;
+    transition:0.4s;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:20px;
+}
 
-        @keyframes breathe {
-            0% { opacity: 0.8; }
-            100% { opacity: 1; transform: scale(1.02); }
-        }
+.card:hover{
+    transform:scale(1.07);
+    box-shadow:0 0 40px rgba(255,255,255,0.2);
+}
 
-        /* Cinematic Fade Out */
-        .fade-out-overlay {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 2s ease-in-out, visibility 2s;
-        }
-    </style>
+.quoteBox{
+    position:absolute;
+    bottom:40px;
+    width:100%;
+    text-align:center;
+    font-size:24px;
+    color:#eee;
+    text-shadow:0 0 10px black;
+}
+</style>
 </head>
-<body class="antialiased">
 
-    <div class="ambient-bg"></div>
-    <div id="cursor-glow"></div>
-    <div class="director-name">NOAMAN</div>
+<body>
+<div class="overlay"></div>
 
-    <div id="intro-screen" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center p-8 transition-all duration-1000">
-        <div class="max-w-3xl text-center space-y-12">
-            <div class="font-english tracking-[0.5em] text-xs text-gray-600 uppercase">A masterpiece crafted in the shadows</div>
-            
-            <div class="font-arabic text-4xl md:text-6xl text-white leading-relaxed font-bold" style="text-shadow: 0 0 20px rgba(255,255,255,0.2);">
-                مرحباً بك في عالمي،<br>
-                <span class="text-gray-400">يا صديقي أسامة بولويز.</span>
-            </div>
-            
-            <p class="font-arabic text-xl text-gray-500 italic">
-                "من صديقك الذي لا أصدقاء له في الأصل.. صاحب هذه الحبكة."
-            </p>
-            
-            <button onclick="revealMasterpiece()" class="mt-12 relative px-12 py-3 border border-gray-800 text-gray-400 hover:text-white hover:border-white transition-all duration-700 font-english tracking-widest text-sm uppercase group overflow-hidden">
-                <span class="relative z-10">Step Into The Void</span>
-                <div class="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-            </button>
-        </div>
-    </div>
+<div class="title">NOAMAN</div>
 
-    <div id="main-arena" class="h-screen w-full flex items-center justify-center px-4 md:px-12 opacity-0 scale-95 transition-all duration-[2000ms] pointer-events-none">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[90rem]">
-            
-            <div onclick="typeQuote(0)" class="monolith h-[550px] flex flex-col items-center justify-center p-12 cursor-pointer group">
-                <h2 class="font-english text-xl tracking-[0.4em] text-gray-600 mb-8 group-hover:text-yellow-600/60 transition-colors">I. Isolation</h2>
-                <div class="h-[2px] w-12 bg-gray-800 mb-12 group-hover:w-24 transition-all duration-700"></div>
-                <p id="txt-0" class="font-arabic text-2xl text-center leading-loose text-gray-300 min-h-[100px]" dir="rtl">البشر كائنات مزعجة..</p>
-            </div>
+<div class="welcome">
+مرحبا صديقي أسامة بولويز 🌙  
+رسالة من نعمان: من صديقك الذي لا أصدقاء له في الأصل.  
+هل يليق بي أن أكون صاحب حبكة، مخرج، مؤلف، مانغاكا؟
+</div>
 
-            <div onclick="typeQuote(1)" class="monolith h-[550px] flex flex-col items-center justify-center p-12 cursor-pointer group">
-                <h2 class="font-english text-xl tracking-[0.4em] text-gray-600 mb-8 group-hover:text-yellow-600/60 transition-colors">II. The Ego</h2>
-                <div class="h-[2px] w-12 bg-gray-800 mb-12 group-hover:w-24 transition-all duration-700"></div>
-                <p id="txt-1" class="font-arabic text-2xl text-center leading-loose text-gray-300 min-h-[100px]" dir="rtl">أنا.. ثم أنا.. ثم أخيراً أنا.</p>
-            </div>
+<div class="cards">
+<div class="card" onclick="showQuote(1)">الوحدة</div>
+<div class="card" onclick="showQuote(2)">الأنانية</div>
+<div class="card" onclick="showQuote(3)">الفراغ</div>
+</div>
 
-            <div onclick="typeQuote(2)" class="monolith h-[550px] flex flex-col items-center justify-center p-12 cursor-pointer group bg-black">
-                <h2 class="font-english text-xl tracking-[0.4em] text-gray-800 mb-8 group-hover:text-gray-500 transition-colors">III. The Void</h2>
-                <div class="h-[2px] w-12 bg-gray-900 mb-12 group-hover:w-24 transition-all duration-700"></div>
-                <p id="txt-2" class="font-arabic text-2xl text-center leading-loose text-gray-800 min-h-[100px] blur-sm group-hover:blur-none transition-all duration-1000" dir="rtl"></p>
-            </div>
+<div class="quoteBox" id="quote">اضغط على بطاقة لتظهر الجملة...</div>
 
-        </div>
-    </div>
+<script>
+const loneliness = [
+"البشر كائنات مزعجة","الوحدة ليست صمتاً بل ضجيج داخلي",
+"أحياناً أفضل صديقي هو ظلي","الصمت أصدق من البشر",
+"لا أحد يفهمك كما تفهم نفسك","الوحدة راحة مؤلمة",
+"أحب المسافات الطويلة","كل العلاقات مؤقتة",
+"الأفكار أوفى من الناس","الوحدة رفاهية مؤلمة",
+"أفضل الحوار مع نفسي","الهدوء صديقي",
+"الانعزال مهارة","البشر يرحلون دائماً",
+"أثق بالصمت","أنا بخير وحدي",
+"الوحدة عالم خاص","الصمت أمان",
+"الهدوء حياة","أحب الهروب من الضجيج",
+"الوحدة تقتل ببطء","الراحة في العزلة",
+"أنا وموسيقاى فقط","لا حاجة للضوضاء",
+"العالم مزدحم بلا معنى","أفضل البقاء بعيداً",
+"الوحدة وضوح","الصمت لغة النخبة",
+"العزلة قوة","أعيش داخلي",
+"أنا مكتفٍ","الأفكار تكفيني",
+"لا حاجة لأحد","أصدقائي خيالي",
+"أنا مشروع وحدة","الهدوء وطن",
+"الانعزال راحة","العالم بعيد",
+"لا أحد يسمعني","الصمت أجمل",
+"الوحدة صدق","أنا وحدي دائماً",
+"أحب المسافات","الوحدة هدوء"
+];
 
-    <script>
-        // Custom Cursor Tracker
-        const cursor = document.getElementById('cursor-glow');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+const selfish = [
+"أنا ثم أنا ثم أنا","العالم يدور حولي",
+"نفسي أولاً دائماً","أحب مصلحتي",
+"أنا أولويتي","لن أضحي براحتى",
+"أختار نفسي","أنا أهم",
+"لن أكون خياراً ثانياً","أستحق الأفضل",
+"أحب نفسي جداً","حلمي أهم",
+"وقتي ملكي","لا وقت للآخرين",
+"أنا المركز","أحب راحتي",
+"لا أقدم التنازلات","أفكر بنفسي",
+"أنا الهدف","أفكاري أولاً",
+"لا أضحي","نفسي فوق الجميع",
+"أنا محور حياتي","أختار نفسي دائماً",
+"أنا الأهم","أحب ذاتي",
+"أنا قراري","أعيش لنفسي",
+"أنا الأول","نفسي أولاً",
+"أنا الغاية","أحب نفسي أكثر",
+"أنا الطريق","أنا البداية",
+"أنا النهاية","أنا السبب",
+"أنا الرغبة","أنا الهدف",
+"أنا الاختيار","أنا القوة",
+"أنا القرار","أنا الحياة",
+"أنا كل شيء"
+];
 
-        // Cinematic Entrance
-        function revealMasterpiece() {
-            const intro = document.getElementById('intro-screen');
-            const arena = document.getElementById('main-arena');
-            
-            intro.classList.add('fade-out-overlay');
-            setTimeout(() => {
-                intro.style.display = 'none';
-                arena.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
-            }, 1500);
-        }
+const voidQuotes = [
+"...","لا شيء","فراغ","صمت","ظلام",
+"لا صوت","لا حياة","لا معنى","نهاية",
+"لا بداية","لا أحد","لا مكان","عدم",
+"العدم يراقبك","لا تفكير","الفراغ يبتلع",
+"اللاشيء يقترب","الصمت يصرخ","الظلام يتنفس",
+"اللاوجود","سكون","فراغ أبدي","سقوط",
+"العدم هنا","الفراغ يتسع","لا زمن",
+"لا ضوء","لا شعور","لا ذاكرة",
+"لا طريق","لا مخرج","الفراغ ينتظر",
+"العدم يسمعك","لا عودة","سكون مطلق",
+"اللاشيء يكبر","الظلام دائم","فراغ داخلي",
+"لا وجود","لا نهاية","العدم يبتسم",
+"لا أثر","لا صوت أبداً","صمت أبدي"
+];
 
-        // Library Generation (50 per category)
-        const library = {
-            isolation: ["البشر كائنات مزعجة..", "الزحام يسرق الروح، والوحدة تعيد بناءها.", "كلامهم كثير، والمعنى مفقود."],
-            ego: ["أنا.. ثم أنا.. ثم أخيراً أنا.", "العالم مسرح، وأنا المخرج والجمهور.", "في مملكتي الخاصة، أنا القانون الوحيد."],
-            void: ["...", "هل تسمع صوت الصمت؟", "هنا لا يوجد شيء.. حتى أنت غير موجود."]
-        };
+function randomItem(arr){
+  return arr[Math.floor(Math.random()*arr.length)];
+}
 
-        // Populate the rest of the 150 quotes
-        for(let i=0; i<47; i++) {
-            library.isolation.push(`أغلق الباب، ففي الخارج لا يوجد سوى الضجيج.`);
-            library.ego.push(`الغرور خطيئة الضعفاء، أما أنا فهذا مجرد إدراك لمقامي.`);
-            library.void.push(`... ${".".repeat(i % 5)}`);
-        }
+function showQuote(type){
+  let text="";
+  if(type==1) text=randomItem(loneliness);
+  if(type==2) text=randomItem(selfish);
+  if(type==3) text=randomItem(voidQuotes);
+  document.getElementById("quote").innerText=text;
+}
+</script>
 
-        const keys = ['isolation', 'ego', 'void'];
-        let isTyping = [false, false, false];
-
-        // Typewriter Effect Function
-        function typeQuote(index) {
-            if (isTyping[index]) return; // Prevent clicking while typing
-            isTyping[index] = true;
-
-            const el = document.getElementById(`txt-${index}`);
-            const list = library[keys[index]];
-            const text = list[Math.floor(Math.random() * list.length)];
-            
-            el.innerHTML = ''; // Clear current text
-            let charIndex = 0;
-
-            function typeChar() {
-                if (charIndex < text.length) {
-                    el.innerHTML += text.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeChar, 30); // Typing speed
-                } else {
-                    isTyping[index] = false;
-                }
-            }
-            typeChar();
-        }
-    </script>
 </body>
 </html>
