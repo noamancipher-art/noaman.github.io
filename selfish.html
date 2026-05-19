@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الأنانية</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="title">الأنانية</div>
+
+<div class="headerBox">
+مرحبا صديقي أسامة بولويز 🌙 <br>
+رسالة من صديقك نعمان الذي لا أصدقاء له من الأساس
+</div>
+
+<div class="centerBox">
+<button class="btn" onclick="newQuote()">جملة جديدة</button>
+<div class="quote" id="q">اضغط الزر</div>
+<a href="index.html"><div class="btn">العودة للرئيسية</div></a>
+</div>
+
+<script>
+const quotes=[
+"أنا ثم أنا ثم أنا","العالم يدور حولي",
+"نفسي أولاً دائماً","أنا أولويتي",
+"أختار نفسي","أنا أهم",
+"لن أكون خياراً ثانياً","أستحق الأفضل",
+"أحب نفسي جداً","وقتي ملكي",
+"أنا المركز","لا أقدم التنازلات",
+"أنا الأهم","أنا قراري",
+"أنا البداية","أنا النهاية",
+"أنا السبب","أنا الهدف"
+];
+
+function newQuote(){
+document.getElementById("q").innerText=
+quotes[Math.floor(Math.random()*quotes.length)];
+}
+</script>
+
+</body>
+</html>
