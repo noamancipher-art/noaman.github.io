@@ -1,104 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Video Generator Pro</title>
+    <title>NOAMAN | Mystery</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Noto+Sans+Arabic:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        .glass-morphism {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        body {
+            background-color: #050505;
+            color: #e0e0e0;
+            font-family: 'Noto Sans Arabic', sans-serif;
+            overflow-x: hidden;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        .faded-text { color: rgba(255, 255, 255, 0.1); }
+        .glass-card {
+            background: rgba(15, 15, 15, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+        }
+        .scary-void {
+            background: linear-gradient(180deg, #050505 0%, #000 100%);
+            animation: pulse-void 4s infinite;
+        }
+        @keyframes pulse-void {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+        #intro-overlay {
+            background: #000;
+            transition: opacity 1.5s ease-in-out;
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-white font-sans antialiased overflow-x-hidden">
+<body>
 
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="text-2xl font-black text-blue-500 tracking-wider">VideoGen AI</div>
-        <ul class="hidden md:flex space-x-8 text-sm font-medium">
-            <li><a href="#" class="hover:text-blue-400 transition">Features</a></li>
-            <li><a href="#" class="hover:text-blue-400 transition">Models</a></li>
-            <li><a href="#" class="hover:text-blue-400 transition">API Access</a></li>
-        </ul>
-        <button class="bg-blue-600 px-5 py-2 rounded-md font-bold hover:bg-blue-700 transition shadow-lg">Login</button>
-    </nav>
+    <div id="intro-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center text-center p-6">
+        <h2 class="text-blue-500 text-sm tracking-[0.5em] mb-4 animate-pulse uppercase font-bold">Initiating</h2>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">أهلاً بك يا صديقي أسامة بولويز</h1>
+        <p class="text-gray-500 italic">"من صديقك الذي لا أصدقاء له في الأصل.."</p>
+        <button onclick="enterSite()" class="mt-12 border border-gray-800 px-10 py-2 hover:bg-white hover:text-black transition duration-700">دخول العزلة</button>
+    </div>
 
-    <main class="container mx-auto px-6 py-24 text-center">
-        <div class="inline-block bg-gray-800 text-blue-400 px-4 py-1 rounded-full text-sm font-semibold mb-6">
-            🚀 V2.0 Engine Now Live
-        </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-            Create Cinematic <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">AI Videos</span> <br /> in Seconds
-        </h1>
-        <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-3xl mx-auto">
-            Transform your text prompts into high-quality, professional video content using our advanced neural rendering models.
-        </p>
+    <div class="fixed inset-0 flex items-center justify-center pointer-events-none select-none">
+        <h1 class="text-[15vw] font-black faded-text uppercase tracking-widest">NOAMAN</h1>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-6 min-h-screen flex flex-col justify-center py-20">
         
-        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <button id="startBtn" class="bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-200 transition shadow-xl w-full sm:w-auto transform hover:scale-105 active:scale-95">
-                Start Generating For Free
-            </button>
-            <button class="border border-gray-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-800 transition w-full sm:w-auto">
-                View Documentation
-            </button>
-        </div>
-    </main>
-
-    <div id="modalOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-        <div class="glass-morphism p-10 rounded-3xl max-w-sm w-full text-center animate-fade-in shadow-2xl relative border-t border-blue-500/30">
-            <button id="closeBtn" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
+        <div class="grid md:grid-cols-3 gap-8 items-stretch">
             
-            <div class="mb-6">
-                <div class="w-20 h-20 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <span class="text-3xl">✨</span>
-                </div>
+            <div onclick="showQuote(0)" class="glass-card p-12 rounded-none cursor-pointer text-center flex flex-col justify-center min-h-[400px]">
+                <span class="text-xs text-blue-900 mb-6 tracking-widest">I. ISOLATION</span>
+                <p id="quote-0" class="text-xl font-light leading-relaxed">البشر كائنات مزعجة..</p>
             </div>
-            
-            <h2 class="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
-                مرة أخرى صديقي أسامة
-            </h2>
-            <p class="text-gray-400 mb-8 leading-relaxed">
-                Welcome back! Our premium AI services are being prepared just for you.
-            </p>
-            <button id="actionBtn" class="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-bold hover:opacity-90 transition shadow-lg">
-                Continue Experience
-            </button>
+
+            <div onclick="showQuote(1)" class="glass-card p-12 rounded-none cursor-pointer text-center flex flex-col justify-center min-h-[400px]">
+                <span class="text-xs text-red-900 mb-6 tracking-widest">II. EGO</span>
+                <p id="quote-1" class="text-xl font-light leading-relaxed">أنا.. ثم أنا.. ثم أخيراً أنا.</p>
+            </div>
+
+            <div onclick="showQuote(2)" class="glass-card scary-void p-12 rounded-none cursor-pointer text-center flex flex-col justify-center min-h-[400px] border-none shadow-inner">
+                <span class="text-xs text-gray-800 mb-6 tracking-widest">III. VOID</span>
+                <p id="quote-2" class="text-xl font-light text-gray-900"></p>
+            </div>
+
         </div>
     </div>
 
-    <footer class="text-center py-8 text-gray-600 border-t border-gray-800 mt-12">
-        <p>&copy; 2026 VideoGen AI. Built with Tailwind CSS.</p>
-    </footer>
-
     <script>
-        const startBtn = document.getElementById('startBtn');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const closeBtn = document.getElementById('closeBtn');
-        const actionBtn = document.getElementById('actionBtn');
+        function enterSite() {
+            document.getElementById('intro-overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('intro-overlay').classList.add('hidden');
+            }, 1500);
+        }
 
-        // Open Modal
-        startBtn.onclick = () => {
-            modalOverlay.classList.remove('hidden');
-        };
+        const quotes = [
+            // Isolation (50 sentences placeholder logic)
+            Array.from({length: 50}, (_, i) => `العزلة هي الحل الوحيد لأن البشر كائنات مزعجة #${i+1}`),
+            // Ego (50 sentences placeholder logic)
+            Array.from({length: 50}, (_, i) => `أنا ثم أنا ثم أخيراً أنا.. لا أحد غيري يهم #${i+1}`),
+            // Void (50 empty/scary sentences)
+            Array.from({length: 50}, (_, i) => `... ${" ".repeat(i)}`)
+        ];
 
-        // Close functions
-        const closeModal = () => modalOverlay.classList.add('hidden');
-        
-        closeBtn.onclick = closeModal;
-        actionBtn.onclick = closeModal;
-        
-        // Close if clicked outside the card
-        window.onclick = (event) => {
-            if (event.target == modalOverlay) closeModal();
+        // Customizing some real sentences as examples
+        quotes[0][0] = "الزحام يسرق الروح، والوحدة تعيد بناءها.";
+        quotes[0][1] = "البشر يتحدثون كثيراً، لكنهم لا يقولون شيئاً.";
+        quotes[1][0] = "في مملكتي الخاصة، أنا الملك والشعب والقانون.";
+        quotes[1][1] = "العالم يدور حولي، البقية مجرد ديكور.";
+        quotes[2][0] = "هل تسمع صوت الصمت؟";
+        quotes[2][1] = "هنا لا يوجد شيء.. حتى أنت غير موجود.";
+
+        function showQuote(index) {
+            const display = document.getElementById(`quote-${index}`);
+            const randomQuote = quotes[index][Math.floor(Math.random() * quotes[index].length)];
+            
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = randomQuote;
+                display.style.opacity = 1;
+            }, 200);
         }
     </script>
-
 </body>
 </html>
